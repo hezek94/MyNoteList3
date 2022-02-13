@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<robot name="pendulum">
+  <joint name="pendulum__link_0_JOINT_0" type="fixed">
+    <parent link="pendulum__link_0"/>
+    <child link="pendulum__link_2"/>
+    <origin rpy="0  0  0" xyz="-0.02718  0       2.25999"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="pendulum__link_3_JOINT_1" type="fixed">
+    <parent link="pendulum__link_2"/>
+    <child link="pendulum__link_3"/>
+    <origin rpy="0  0  0" xyz="0.02718 -1.58576 -0.00544"/>
+    <axis xyz="0  1  0"/>
+    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+  </joint>
+  <joint name="pendulum__link_3_JOINT_2" type="revolute">
+    <parent link="pendulum__link_3"/>
+    <child link="pendulum__link_5"/>
+    <origin rpy="0  0  0" xyz="0.01685  0.02983 -0.04339"/>
+    <axis xyz="0  1  0"/>
+    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+  </joint>
+  <link name="pendulum__link_0">
+    <inertial>
+      <mass value="1.23174"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.42399" ixy="0" ixz="0" iyy="0.42399" iyz="0" izz="0.0268206"/>
+    </inertial>
+    <collision name="pendulum__collision">
+      <origin rpy="0  0  0" xyz="0       0       0.29999"/>
+      <geometry>
+        <cylinder length="0.13564" radius="1.5067"/>
+      </geometry>
+    </collision>
+    <collision name="pendulum__collision_1">
+      <origin rpy="0  0  0" xyz="0       0       1.39999"/>
+      <geometry>
+        <cylinder length="2" radius="0.180726"/>
+      </geometry>
+    </collision>
+    <visual name="pendulum__visual">
+      <origin rpy="0  0  0" xyz="0       0       0.29999"/>
+      <geometry>
+        <cylinder length="0.13564" radius="1.5067"/>
+      </geometry>
+    </visual>
+    <visual name="pendulum__ModelPreview_0__link_0__visual_1">
+      <origin rpy="0  0  0" xyz="0       0       1.39999"/>
+      <geometry>
+        <cylinder length="2" radius="0.180726"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="pendulum__link_2">
+    <inertial>
+      <mass value="0.0907512"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.0901393" ixy="0" ixz="0" iyy="0.000400141" iyz="0" izz="0.0901827"/>
+    </inertial>
+    <collision name="pendulum__collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <box size="0.171249 3.44899 0.153572"/>
+      </geometry>
+    </collision>
+    <visual name="pendulum__visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <box size="0.171249 3.44899 0.153572"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="pendulum__link_3">
+    <inertial>
+      <mass value="0.0245266"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.00010198" ixy="0" ixz="0" iyy="0.0020855" iyz="0" izz="0.00210424"/>
+    </inertial>
+    <collision name="pendulum__collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <box size="1 0.171847 0.142701"/>
+      </geometry>
+    </collision>
+    <visual name="pendulum__visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <box size="1 0.171847 0.142701"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="pendulum__link_5">
+    <inertial>
+      <mass value="0.001873"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000353534" ixy="0" ixz="0" iyy="0.000353534" iyz="0" izz="2.91772e-07"/>
+    </inertial>
+    <collision name="pendulum__collision">
+      <origin rpy="0  0  0" xyz="0    0   -0.76"/>
+      <geometry>
+        <cylinder length="1.50469" radius="0.017651"/>
+      </geometry>
+    </collision>
+    <visual name="pendulum__visual">
+      <origin rpy="0  0  0" xyz="0    0   -0.76"/>
+      <geometry>
+        <cylinder length="1.50469" radius="0.017651"/>
+      </geometry>
+    </visual>
+  </link>
+ <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pendulum__link_3_JOINT_2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+ <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/pendulum</robotNamespace>
+  </plugin>
+</gazebo>
+	
+</robot>

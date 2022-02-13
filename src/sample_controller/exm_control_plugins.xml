@@ -1,0 +1,16 @@
+<library path="lib/libexm_controllerm_lib">
+	<class name="exm_controller/PositionController"
+		type="exm_controller_ns::PositionController"
+		base_class_type="controller_interface::ControllerBase" />
+
+</library>
+
+
+<!--- you should add this to the package.xml file add inside the export 
+<controller_interface plugin="${prefix}/exm_control_plugins.xml"/>
+
+then add the CMAKELists.txt
+
+add_library(selected_name_lib src/exm_controller.cpp)
+target_link_libraries(selected_name_lib ${catkin_LIBRARIES}) -->
+

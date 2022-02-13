@@ -1,0 +1,8 @@
+prefix=/home/femi/sample_ws/install
+
+Name: sample_controller
+Description: Description of sample_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

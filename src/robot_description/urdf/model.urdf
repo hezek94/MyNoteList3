@@ -78,7 +78,7 @@
       <inertia ixx="0.00010198" ixy="0" ixz="0" iyy="0.0020855" iyz="0" izz="0.00210424"/>
     </inertial>
     <collision name="pendulum__collision">
-      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <origin rpy="0  0  0" xyz="0  0 0"/>
       <geometry>
         <box size="1 0.171847 0.142701"/>
       </geometry>
